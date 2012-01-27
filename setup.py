@@ -5,7 +5,7 @@ from distutils.core import setup
 
 setup(
     name = 'django-cached-manager',
-    version = '0.1.0',
+    version = '0.0.1',
     license = 'BSD',
     description = 'Django models manager that encapsulates some common caching operations',
     long_description = open('README.rst').read(),
