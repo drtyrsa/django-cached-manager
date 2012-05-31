@@ -12,8 +12,8 @@ class NotInt(Exception):
 
 class CachedManager(models.Manager):
     def _from_cache(self, cache_key, kwargs=None, only=None,
-                       none_on_error=True, int_only=False, empty_value=-1,
-                       one_item=False, const_kwargs=None):
+                    none_on_error=True, int_only=False, empty_value=-1,
+                    one_item=False, const_kwargs=None):
         '''
         Tries to find an object in cache by ``key``. If it's possible
         (``cache.get(key) != empty_value``) the object is returned.
@@ -33,9 +33,9 @@ class CachedManager(models.Manager):
         will be raised.
         * ``empty_value`` - if ``cache.get(key) != empty_value``, an object
         is in cache.
-        * ``one_item`` - if ``True`` the method will try to make ``.get()`` call
-        and return one object. Else it will make ``.filter()`` call and return
-        list.
+        * ``one_item`` - if ``True`` the method will try to make ``.get()``
+        call and return one object. Else it will make ``.filter()`` call and
+        return list.
         * ``const_kwargs`` - same as ``kwargs``, but doesn't affect cache
         key.
         '''
@@ -77,7 +77,8 @@ class CachedManager(models.Manager):
         cache.set(key, result)
         return result
 
-    def _objects_by_pks(self, get_item_func, pks, cache_key, dict_key='pk', empty_value=-1):
+    def _objects_by_pks(self, get_item_func, pks, cache_key, dict_key='pk',
+                        empty_value=-1):
         '''
         Returns a list of objects by a list of pk's (or any other fields).
 
