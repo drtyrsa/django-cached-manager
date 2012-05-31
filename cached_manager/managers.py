@@ -42,9 +42,9 @@ class CachedManager(models.Manager):
         '''
         if kwargs is None:
             kwargs = {}
-        new_kwargs = {}
         try:
             if int_only and kwargs:
+                new_kwargs = {}
                 for k, v in kwargs.iteritems():
                     try:
                         new_kwargs[k] = int(v)
