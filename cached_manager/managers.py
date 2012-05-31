@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.db import models
 from django.core.cache import cache
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class NotInt(Exception):
@@ -70,11 +69,11 @@ class CachedManager(models.Manager):
                 return None
             else:
                 raise NotInt
-        except ObjectDoesNotExist:
+        except self.model.DoesNotExist:
             if none_on_error:
                 result = None
             else:
-                raise ObjectDoesNotExist
+                raise self.model.DoesNotExist
         cache.set(key, result)
         return result
 
