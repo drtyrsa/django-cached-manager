@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 from django.core.cache import cache
-from django.core.exceptions import ObjectDoesNotExist
 
 from cached_manager.tests.utils import SettingsTestCase
 from cached_manager.tests.models import Person
@@ -95,7 +94,7 @@ class TestManager(SettingsTestCase):
     def test_does_not_exists_raises_exception_if_not_none_on_error(self):
         clear_locmem_cache()
 
-        self.assertRaises(ObjectDoesNotExist,
+        self.assertRaises(Person.DoesNotExist,
                           Person.mng._from_cache,
                          *('person::%(name)s', {'name': u'Bender'}),
                         **dict(one_item=True, none_on_error=False))
